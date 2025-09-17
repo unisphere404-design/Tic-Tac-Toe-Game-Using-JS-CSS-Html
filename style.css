@@ -4,33 +4,28 @@
 }
 
 body {
-    height: 100%;
+    height: 100vh;
     background-color: #37353E;
-    text-align: center; /*btn center mein isi ki sahayta se ho raha h*/
+    text-align: center;
 }
 
 h1 {
     color: #D3DAD9;
     text-align: center;
+    padding: 2rem 0;
 }
 
 .container {
     height: 70vmin;
-    /* 70% of viewport height. Visible page ka 70% part .container ko milega */
     display: flex;
-    /* flex-direction: column; // agar <h1> .container div ke andar hota toh
-    <h1> ke karan sahi se align nhi ho raha tha to column wise kiye, kyunki h1 ko upar aur .game ko niche rakhna tha*/
     justify-content: center;
     align-items: center;
 }
 
 .game {
     display: grid;
-    /*Grid system activate karta hai*/
     grid-template-columns: repeat(3, 1fr);
-    /*3 equal columns banata hai*/
     grid-template-rows: repeat(3, 1fr);
-    /*3 equal rows banata hai*/
     gap: .7vmin;
     width: 60vmin;
     height: 60vmin;
@@ -38,233 +33,100 @@ h1 {
 
 .box {
     font-size: 8vmin;
-    /*8th part of min. dimension of viewport*/
     background-color: #DBAFA0;
     color: black;
     border-radius: 2.5vmin;
     box-shadow: 0.5vmin 0.5vmin 1vmin rgba(0, 0, 0, 0.4);
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
 }
 
-/* #reset-btn {
-    margin-top: 50px;
-    padding: 2.5vmin;
+.box:hover:not(:disabled) {
+    transform: scale(1.05);
+}
+
+#reset-btn {
+    padding: 3vmin;
+    font-size: 3vmin;
+    background-color: #27272a;
+    color: #fff;
     border-radius: 2vmin;
     border: none;
-    background-color: #BB8493;
-    color: #ffffff;
-    font-size: 3vmin;
-} */
-
-#reset-btn{
-  padding: 3vmin;
-  font-size: 3vmin;
-  background-color: #27272a;
-  color: #fff;
-  border-radius: 2vmin;
-  border: none;
+    cursor: pointer;
+    margin-top: 2rem;
 }
-
-/* .popup-overlay {
-  height: 50vmin;
-  width: 50vmin;
-  position: absolute;
-  display: none;
-} */
 
 .popup-overlay {
-  height: 100vh;
-  width: 100vw;
-  position: fixed;
-  top: 0;
-  left: 0;
-  display: none;
-  justify-content: center;
-  align-items: center;
-  background: rgba(0, 0, 0, 0.6); /* optional overlay background */
-  z-index: 999;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 999;
 }
 
-
 .popup-content {
-  background-color: #ede4dd ;
-  padding: 3vmin 4vmin;
-  border-radius: 3vmin;
-  animation: pop 0.3s ease-out;
+    background-color: #ede4dd;
+    padding: 5vmin 3vmin;
+    border-radius: 3vmin;
+    animation: pop 0.3s ease-out;
+    text-align: center;
 }
 
 #play-again-btn {
-  padding: 1.6vmin;
-  font-size: 3vmin;
-  background-color: #6c2e72;
-  color: #fff;
-  border-radius: 2vmin;
-  border: none;
+    padding: 2vmin 3vmin;
+    font-size: 4vmin;
+    background-color: #6c2e72;
+    color: #fff;
+    border-radius: 2vmin;
+    border: none;
+    cursor: pointer;
 }
 
 @keyframes pop {
-      from {
+    from {
         transform: scale(0.5);
         opacity: 0;
-      }
-      to {
+    }
+    to {
         transform: scale(1);
         opacity: 1;
-      }
     }
-
+}
 
 #game-status {
-  font-size: 5vmin;
-  font-weight: bold;
-  margin-bottom: 1vmin;
-  text-align: center;
+    font-size: 6vmin;
+    font-weight: bold;
+    margin-bottom: 2vmin;
+    text-align: center;
 }
 
 #msg {
-  font-size: 4vmin;
-  margin-bottom: 2vmin;
-  text-align: center;
+    font-size: 4vmin;
+    margin-bottom: 3vmin;
+    text-align: center;
 }
 
 @keyframes glow {
-  0%, 100% {
-    filter: brightness(1);
-    box-shadow: 0 0 5px rgba(255, 255, 255, 0.4);
-  }
-  50% {
-    filter: brightness(1.1);
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
-  }
+    0%, 100% {
+        filter: brightness(1);
+        box-shadow: 0 0 5px rgba(255, 255, 255, 0.4);
+    }
+    50% {
+        filter: brightness(1.1);
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+    }
 }
 
 .winning-box {
-  background-color: #fdbda8;
-  color: white;
-  font-weight: bold;
-  border: 2px solid #fff;
-  animation: glow 1s infinite ease-in-out;
+    background-color: #fdbda8 !important;
+    color: white !important;
+    font-weight: bold;
+    border: 2px solid #fff;
+    animation: glow 1s infinite ease-in-out;
 }
-
-
-
-/* #game-status {
-  font-size: 4vmin;
-}
-#msg {
-  font-size: 3vmin;
-} */
-
-/*
-html {
-  font-size: 16px;
-}
-
-.box {
-  font-size: 2rem;
-}
-Iska matlab kya hua?
-1rem = 16px (kyunki root element ka font-size 16px hai)
-
-To 2rem = 2 × 16px = 32px
-Isliye .box ka font-size hoga 32px.*/
-
-/* .game does not have any explicit font-size defined.
-That means, .game inherits the font-size from its parent (likely the <body> or <html> element).
-Usually, the root <html> element has default font-size of 16px (unless you changed it).
-So, .game will have font-size inherited from the root or body, usually 16px. */
-
-/*
-Suppose your browser window (viewport) is:
-Width: 1200px
-Height: 800px
-
-Then:
-1vw = 1% of width = 12px
-1vh = 1% of height = 8px
-1vmin = 1% of the smaller of width or height = 1% of 800px = 8px
-*/
-
-/*
-display: flex; kya karta hai?
-Jab aap kisi container (jaise <div>) ko display: flex; dete ho, to uska layout flexbox ban jaata hai.
-
-Iska matlab:
-Container ke andar ke elements (children) ek line mein arrange ho jaate hain (by default: horizontal row).
-Aapko unhe align karna, space dena, center karna, etc., bahut aasaan ho jaata hai.
-
-🔸 Example:
-<div class="container">
-  <div>Item 1</div>
-  <div>Item 2</div>
-  <div>Item 3</div>
-</div>
-------------------------------------
-.container {
-  display: flex;
-}
-
-Yeh teen items ek row mein aajayenge, side-by-side.
-
-Q. flex-wrap: wrap; kya karta hai?
-By default, flex items ek hi line mein rehte hain, chahe jagah kam hi kyu na ho. Isse elements dab jaate hain ya chhote ho jaate hain.
-
-Jab aap likhte ho:
-.container {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-Toh iska matlab hai:
-Agar jagah kam hai, to items agli line mein chale jaayenge.
-Jaise wrapping in text — yeh bhi flex items ko wrap kar deta hai.
-*/
-
-/*
-🔹justify-content kya karta hai?
-Yeh main axis (jo direction of flex hai) mein items ka alignment set karta hai.
-Default flex-direction: row mein, horizontal alignment control karta hai.
-
-✅ Common values:
-| Value           | Kya hota hai                                     |
-| --------------- | ------------------------------------------------ |
-| `flex-start`    | Sab items left side mein (default)               |
-| `center`        | Beech mein (center)                              |
-| `flex-end`      | Right side mein                                  |
-| `space-between` | First item left, last right, baaki evenly spaced |
-| `space-around`  | Sab ke aas-paas equal space                      |
-| `space-evenly`  | Sabke beech equal space                          |
-
-🔹align-items kya karta hai?
-Yeh cross axis mein alignment control karta hai.
-Agar flex-direction: row hai, to yeh vertical alignment set karega.
-
-✅ Common values:
-| Value        | Kya hota hai                                                          |
-| ------------ | --------------------------------------------------------------------- |
-| `stretch`    | Items ki height container ke according stretch ho jaati hai (default) |
-| `flex-start` | Sab top mein align honge                                              |
-| `center`     | Beech mein (vertically center)                                        |
-| `flex-end`   | Sab bottom mein align honge                                           |
-*/
-
-
-
-
-/* .game {
-    height: 60vmin;
-    width: 60vmin;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center; //horizontal ke liye
-    align-items: center;
-    gap: 1vmin; //boxes(.game ke children) ke beech mein gaps ke liye // aur flex-dir. by def. row h, to ye gap bhi row mei dega
-} */
-/* gap: 10px 20px;
-   10px = row-gap (vertical), 20px = column-gap (horizontal) */
-
-/* .box {
-    height: 18vmin;
-    width: 18vmin;
-} */
-/* game ke paas height, width. 60 h, to 20-20-20 krke de sakte the, lekin style ke liye 18-18-18 diye h,
-   taki beech mein thoda space rahe aur sundar lage */
